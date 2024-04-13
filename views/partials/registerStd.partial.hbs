@@ -1,0 +1,103 @@
+<div class='input-group m-2'>
+	<input
+		type='text'
+		name='firstName'
+		aria-label='First name'
+		class='form-control'
+		placeholder='FirstName'
+		required
+		value='{{this.firstName}}'
+	/>
+
+	<input
+		type='text'
+		name='lastName'
+		aria-label='Last name'
+		class='form-control'
+		placeholder='lastName'
+		required
+		value='{{this.lastName}}'
+	/>
+
+	<input
+		type='text'
+		name='middleName'
+		aria-label='middle name'
+		class='form-control'
+		placeholder='Middlename'
+		value='{{this.middleName}}'
+	/>
+</div>
+
+<div class='input-group m-2'>
+	<!-- email input -->
+	<input
+		type='email'
+		name='email'
+		class='form-control'
+		placeholder='email'
+		value='{{this.email}}'
+	/>
+
+	<!-- Phone No input -->
+	<input
+		type='text'
+		name='phoneNo'
+		class='form-control'
+		placeholder='Phone Number'
+		maxlength='11'
+		value='{{this.phoneNo}}'
+	/>
+
+	<select name='gender' class='form-select' id='inputGroupSelect02' required>
+		<option selected>Choose...</option>
+		<option value='male'>Male</option>
+		<option value='female'>Female</option>
+	</select>
+
+</div>
+
+<div class='input-group m-2'>
+	<!-- RegNo input -->
+	<input
+		type='text'
+		name='regNo'
+		class='form-control'
+		placeholder='Registration Number'
+		required
+		maxlength='7'
+		value='{{this.regNo}}'
+	/>
+
+	<!-- Matric No input -->
+	<input
+		type='text'
+		name='matricNo'
+		class='form-control'
+		placeholder='Matric Number'
+		required
+		maxlength='10'
+		value='{{this.matricNo}}'
+	/>
+</div>
+
+<div class='input-group m-2'>
+	{{#if this.password}}{{else}}
+		<input
+			type='password'
+			name='password'
+			class='form-control'
+			placeholder='Password'
+			required
+		/>
+	{{/if}}
+	<!-- Matric No input -->
+	<input
+		type='text'
+		name='address'
+		class='form-control'
+		id='address'
+		placeholder='address'
+		value='{{this.address}}'
+	/>
+</div>

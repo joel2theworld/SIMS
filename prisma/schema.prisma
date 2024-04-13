@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model studentreg {
+  id            Int            @id @default(autoincrement())
+  regNo         String         @unique(map: "StudentReg_regNo_key")
+  matricNo      String
+  firstName     String
+  lastName      String
+  email         String?
+  phoneNo       String
+  password      String
+  address String? 
+  gender String? 
+  userRoleId    Int
+  middleName    String?
+  createdAt     DateTime?      @default(now())
+  updatedAt     DateTime?      @updatedAt
+  userrole      userrole       @relation(fields: [userRoleId], references: [id], map: "StudentReg_userRoleId_fkey")
+  incidentpost  incidentpost[]
+  
+
+  @@index([userRoleId], map: "StudentReg_userRoleId_fkey")
+}
+
+model staff {
+  id             Int              @id @default(autoincrement())
+  firstName      String
+  lastName       String
+  email          String?
+  phoneNo        String
+  username       String           @unique(map: "Staff_username_key")
+  password       String
+  createdAt      DateTime?        @default(now())
+  updatedAt      DateTime?        @updatedAt
+  userRoleId     Int
+  userrole       userrole         @relation(fields: [userRoleId], references: [id], map: "Staff_userRoleId_fkey")
+  assignincident assignincident[]
+
+  
+
+  @@index([userRoleId], map: "Staff_userRoleId_fkey")
+}
+
+model incidentpost {
+  id               Int              @id @default(autoincrement())
+  description      String?
+  roomno String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  studentId        Int
+  statusId         Int
+  categoryId       Int
+  isAssign         Int?
+
+
+  incidentcategory incidentcategory @relation(fields: [categoryId], references: [id], map: "IncidentPost_categoryId_fkey")
+  status           status           @relation(fields: [statusId], references: [id], map: "IncidentPost_statusId_fkey")
+  studentreg       studentreg       @relation(fields: [studentId], references: [id], onDelete: Cascade, map: "IncidentPost_studentId_fkey")
+  assignincident   assignincident[]
+  feedback         feedback[]
+
+  @@index([categoryId], map: "IncidentPost_categoryId_fkey")
+  @@index([statusId], map: "IncidentPost_statusId_fkey")
+  @@index([studentId], map: "IncidentPost_studentId_fkey")
+}
+
+model incidentcategory {
+  id           Int            @id @default(autoincrement())
+  category     String?
+  createdAt    DateTime?      @default(now())
+  updatedAt    DateTime?      @updatedAt
+  incidentpost incidentpost[]
+}
+
+model assignincident {
+  id           Int          @id @default(autoincrement())
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  staffId      Int
+  incidentId   Int
+  incidentpost incidentpost @relation(fields: [incidentId], references: [id], onDelete: Cascade, map: "AssignIncident_incidentId_fkey")
+  staff        staff        @relation(fields: [staffId], references: [id], onDelete: Cascade,map: "AssignIncident_staffId_fkey")
+
+  @@index([incidentId], map: "AssignIncident_incidentId_fkey")
+  @@index([staffId], map: "AssignIncident_staffId_fkey")
+}
+
+model feedback {
+  id           Int          @id @default(autoincrement())
+  response     String?
+  rating       Int
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  incidentId   Int
+  incidentpost incidentpost @relation(fields: [incidentId], references: [id], onDelete: Cascade, map: "Feedback_incidentId_fkey")
+
+  @@index([incidentId], map: "Feedback_incidentId_fkey")
+}
+
+model status {
+  id           Int            @id @default(autoincrement())
+  status       String         @default("pending")
+  createdAt    DateTime?      @default(now())
+  updatedAt    DateTime?      @updatedAt
+  incidentpost incidentpost[]
+}
+
+model userrole {
+  id         Int          @id @default(autoincrement())
+  roles      String       @default("student")
+  createdAt  DateTime?    @default(now())
+  updatedAt  DateTime?    @updatedAt
+  staff      staff[]
+  studentreg studentreg[]
+}
+
+

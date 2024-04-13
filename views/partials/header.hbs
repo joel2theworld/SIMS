@@ -1,0 +1,68 @@
+
+ <nav class="navbar navbar-expand-lg bg-gradient px-5 shadow" style="background-color:#084298">
+
+  <div class="container-fluid">
+    <a class="navbar-brand link-light fw-bold" href="/">SIRS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if user}}
+
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link link-light active" aria-current="page" href="/">Home</a>
+        </li>
+        {{/if}}
+
+        {{#if isAdmin }}
+        <li class="nav-item">
+          <a class="nav-link link-light" href="/allstaff">All Staff</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link link-light" href="/allstudents">All Students</a>
+        </li>
+
+        {{/if}}
+        <!--display if user logged in -->
+        {{#if user}}        
+
+         <li class="nav-item">
+          <a class="nav-link link-light" href="/dashboard">Dashboard</a>
+        </li>
+      {{/if}}
+      </ul>
+      <div class="d-flex" role="search">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <li class="nav-item">
+         
+
+{{#if user}}
+
+
+<li class="nav-item mr-3">
+        
+          <a href="/profile/{{user.id}}" class="nav-link link-light text-lowercase"> <i class="bi bi-person-fill"></i> welcome {{user.firstName}} </a>        
+        </li>
+        <li class="nav-item">
+          <a class="nav-link link-light" href="/logout">Logout</a>
+        </li>
+    {{else}}
+     <a class="nav-link link-light" href="/login">Login </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link link-light" href="/register">Register</a>
+        </li>
+{{/if}}
+        </ul>
+
+      </div>      
+    </div>
+  </div>
+
+</nav>
+
+<!-- Header Slide section  -->
+
+

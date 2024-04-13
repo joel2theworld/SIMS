@@ -1,0 +1,40 @@
+
+{{> dashboard-links}}
+<h4 class="text-center">All Assigned Staff</h4>
+
+<table class="table table-bordered table-striped">
+  
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Staff </th>
+      <th scope="col">Incident </th>
+      <th scope="col">Date</th>
+      
+      {{!-- <th scope="col" class="text-end">Action</th>
+    </tr> --}}
+  </thead>
+  <tbody>
+    {{#each assignedInc}}
+    <tr>
+      <th scope="row">{{indexIncr @index}}</th>
+      <td>{{this.staff.firstName}}</td>
+      <td>{{this.incidentpost.description}}</td>
+
+      <!--Nested loop for users -->   
+        
+        <td>{{dateFormat this.createdAt }}</td>
+      
+      {{!-- <td class="text-end">
+   
+    <a href="/dashboard/{{this.id}}" type="button" class="btn btn-danger">Delete</a>
+
+<!--ADMIN -->
+    <a href="/resolve/{{this.id}}" type="button" class="btn btn-success">Resolve</a>
+
+        </td> --}}
+    </tr>
+    {{/each}}
+    
+  </tbody>
+</table>

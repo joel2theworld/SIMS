@@ -1,0 +1,24 @@
+<form class="d-flex justify-content-center" action="/registerpost" method="post">
+  <div class="col-md-7">
+   
+<div class="card text-center p-5">
+<h2 class="mb-5">Register </h2>
+  <!-- Error Message-->
+  {{> errorMessage}}
+
+  {{> registerStd.partial}}
+  
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary d-grid btn-lg mb-4 btn-sm">Register</button> 
+  </form>
+  
+  <!-- Register buttons -->
+  <div class="text-center">
+    <p>Already have an account? <a href="/login" class="text-decoration-none">Login</a></p>
+    <b><span class="text-danger">Note:*</span> use your Reg. Number and password to login</b>
+</div>
+  </div>
+</div>
+  </div>
+  
+</form>

@@ -1,0 +1,30 @@
+
+{{#each staffList}}
+<form class="d-flex justify-content-center" action="/editstaff/{{this.id}}" method="post">
+  <div class="col-md-7">
+   
+<div class="card text-center p-4">
+<h2 class="mb-3">Update Staff </h2>
+  
+<!--On successful message display-->
+{{> successMessage}}
+
+<!--On error message display -->
+{{> errorMessage}}
+  
+{{> newstaff.partial}}
+ 
+   
+
+  <!-- Update buttons -->
+<div class="row">
+     <a type="button" href="/allstaff" class="btn btn-secondary btn-md d-grid gap-2 col-4 mx-auto">Cancel</a> 
+     <button type="submit" class="btn btn-success btn-md d-grid gap-2 col-7 mx-auto">Update</button>
+
+</div>   
+  </div>
+</div>
+  </div>  
+</form>
+
+{{/each}}

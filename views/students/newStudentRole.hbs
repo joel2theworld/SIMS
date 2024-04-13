@@ -1,0 +1,38 @@
+{{> dashboard-links}}
+
+
+<!-- Partial Assign student role -->   
+<div class="d-flex justify-content-center" >
+  <div class="col-md-8 ">   
+<div class="card text-center p-5">
+  
+  <form action="/assign/assignstudentrole" method="post">
+<h6 class="text-center text-success m-2">Select role to assign student</h6>
+
+{{> successMessage}}
+
+   <select name="id" class="form-select p-1 m-2" id="inputGroupSelect02" required >
+                
+              <option selected>Choose student to assign...</option>
+              {{#studentList as |student key|}}
+              
+              <option value="{{student.id}}">{{student.firstName}} {{student.lastName}}</option>
+              {{/studentList}}   
+            </select>
+
+  
+<select name="userRoleId" class="form-select p-1 m-2" id="inputGroupSelect01" required >
+              <option selected>Choose Role to assign...</option>
+              {{#userRoles as |role key|}}
+              <option value="{{role.id}}">{{role.roles}}</option>
+              {{/userRoles}}   
+            </select>
+
+<a href="/allstudents" type="button" class="btn btn-secondary btn-sm btn-block">Cancel</a>
+   
+<button type="submit" class="btn btn-danger btn-sm btn-block">Assign Role </button>
+    
+  </form> 
+
+  </div>
+  </div>

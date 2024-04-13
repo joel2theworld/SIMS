@@ -1,0 +1,86 @@
+{{#each incidentPosts as |incident|}}
+	<form action='/updatepost/{{incident.id}}' method='post'>
+		<div class='modal-dialog'>
+			<div class='modal-content'>
+				<div class='modal-header'>
+					<h5 class='modal-title' id='exampleModalLabel'>Edit Incident Report
+					</h5>
+					<button
+						type='button'
+						class='btn-close'
+						data-bs-dismiss='modal'
+						aria-label='Close'
+					></button>
+				</div>
+
+				<div class='modal-body'>
+					<div class='form-floating m-2'>
+						<textarea
+							required
+							name='description'
+							class='form-control'
+							placeholder='describe your report here..'
+							id='floatingTextarea'
+							rows='12'
+							style='height: 100px'
+						>{{incident.description}}</textarea>
+						<label for='floatingTextarea'>Description</label>
+					</div>
+
+					<div class='form-floating m-2'>
+						<input
+							type='text'
+							name='roomno'
+							required
+							class='form-control'
+							aria-label='Sizing example input'
+							aria-describedby='inputGroup-sizing-default'
+							placeholder='Room Number'
+							value='{{incident.roomno}}'
+						/>
+						<label for='floatingTextarea'>Room No and Hostel</label>
+					</div>
+
+					<div class='form-floating m-2'>
+						<div class='input-group mb-3'>
+							<select
+								name='categoryId'
+								class='form-select'
+								id='inputGroupSelect02'
+								required
+								value='{{incident.categoryId}}'
+							>
+								<option selected>Choose...</option>
+								<option value='1'>Maintenance</option>
+								<option value='2'>Security</option>
+								<option value='3'>Electrical</option>
+								<option value='4'>Business</option>
+							</select>
+
+							<input
+								type='hidden'
+								name='studentId'
+								value='{{incident.studentId}}'
+							/>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Submit button -->
+				<div class='modal-footer'>
+					<a
+						href='/pending'
+						type='button'
+						class='btn btn-secondary btn-sm d-grid gap-2 col-4 mx-auto'
+						data-bs-dismiss='modal'
+					>Close</a>
+					<button
+						type='submit'
+						class='btn btn-danger btn-sm d-grid gap-2 col-6 mx-auto'
+					>Update </button>
+				</div>
+			</div>
+		</div>
+	</form>
+{{/each}}

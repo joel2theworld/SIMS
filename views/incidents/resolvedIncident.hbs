@@ -1,0 +1,70 @@
+{{> dashboard-links}}
+
+{{#if isAdmin}}
+<!--Admin users resolved page -->
+{{> adminIncResolved }}
+      {{else}}
+
+<!--Student users resolved page -->
+      {{#if resolvedIncidents.length}}
+
+      <div class="container mx-4">
+        <table class="table table-bordered table-striped">
+  <h4 class="text-center">Resolved Incidents</h4>
+
+  	
+	<form method='post' action='/resolve' class='d-flex' role='search' novalidate>
+	{{> search}}	
+</form>
+
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Description </th>
+      <th scope="col">Category </th>
+      <th scope="col">Room No </th>
+      
+      <th scope="col" class="text-center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each resolvedIncidents}}
+    <tr>
+      <th scope="row">{{indexIncr @index}}</th>
+      <td>{{this.description}}</td>
+      <td>{{this.incidentcategory.category}}</td>
+      <td>{{this.roomno}}</td>
+
+      <!--Nested loop for users -->
+    
+      <td class="text-center m-1">        
+        <a href="/incidentdetails/{{this.id}}" type="button" class="btn btn-secondary btn-sm m-1">Comment <i class="bi bi-chat-square-text"></i> </a>
+        </td>    
+    </tr>
+    {{/each}}    
+  </tbody>
+</table> 
+
+        
+      </div>
+
+<!-- Record not found -->
+
+    {{else}}
+      <div class="d-flex justify-content-center" >
+  <div class="col-md-5 ">
+   
+<div class="card text-center p-5">
+  <h3 class="text-danger">No record found yet</h3>
+  </div>
+
+</div>
+</div>
+
+{{/if}}
+
+
+
+      
+{{/if }}
+

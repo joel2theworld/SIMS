@@ -1,0 +1,80 @@
+
+{{> dashboard-links}}
+<h4 class="text-center">Details Incident </h4>
+
+<div class="d-flex justify-content-center" >
+  <div class="col-sm-10">  
+<div class="card  p-5">
+
+  <dl class="row">
+    {{#each incidentDetails}}
+    <dt class="col-sm-3">Description</dt>
+  <dd class="col-sm-9">{{this.description}}</dd>
+
+  <dt class="col-sm-3">Room No:</dt>
+  <dd class="col-sm-9">
+    {{this.roomno}}
+  </dd>
+
+  <dt class="col-sm-3">Category:</dt>
+  <dd class="col-sm-9">
+    {{this.incidentcategory.category}}
+  </dd>
+
+  <dt class="col-sm-3">Posted by:</dt>
+  <dd class="col-sm-9">{{this.studentreg.firstName}} {{this.studentreg.lastName}}</dd>
+
+   <dt class="col-sm-3">Posted:</dt>   
+  <dd class="col-sm-9"> {{dateFormat this.createdAt}}</dd>
+    {{/each}}
+    
+    <dt class="col-sm-3">Assigned to:</dt>
+  <dd class="col-sm-9 text-danger">
+    <strong>
+{{staffAssigned}}
+    </strong>
+    </dd>
+  
+</dl>
+</div>
+
+{{#if isAdmin}}
+{{else}}
+{{#each incidentDetails}}
+ <form action="/incidentdetails/{{this.id}}" method="post">
+<div class="input-group mb-3 mt-2">
+ 
+    <input type="text" name="response" class="form-control" placeholder="Reply if satisfied or not" aria-label="feed back" aria-describedby="button-addon2">
+     
+      <input type="number" name="rating" class="form-control" placeholder="rating from 1 - 5" aria-label="rating" min="1" max="5" maxlength="1" >
+      <input type="hidden" name="incidentId" value="{{this.id}}" required>
+
+     <button type="submit" class="btn btn-danger" id="button-addon2">Comment
+     </button>
+
+     {{!-- <a type="submit" href="/incidentdetails/{{this.id}}" class="btn btn-danger" id="button-addon2">Post</a> --}}  
+</div>
+  </form>
+     {{/each}}
+  {{/if}}
+
+<ul class="list-group">
+ <h6 class="text-center text-danger"> <b>Comments</b></h6>
+ {{#each feedbackList as |feed key|}}
+ <li class="list-group-item d-flex justify-content-between align-items-start m-2    shadow p-3 bg-body rounded ">
+    <div class="ms-2 me-auto ">
+      <div class="fw-bold">{{this.studentreg.firstName}} {{this.studentreg.lastName}}</div>
+      <p class="fs-5">{{feed.response}}</p>
+      <small class="text-muted ">{{ dateFormat feed.createdAt}}</small>
+    </div>    
+    <span class="badge bg-primary rounded-pill p-1">{{feed.rating}}</span>
+  </li>  
+   
+
+  {{/each}}
+  
+</ul>
+</div>
+</div>
+
+

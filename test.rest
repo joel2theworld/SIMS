@@ -1,0 +1,119 @@
+
+###
+GET http://localhost:5000/api/student/profile
+
+### Register a student
+POST http://localhost:5000/api/student/register
+Content-Type: application/json
+
+{
+    "regNo": "MM/22/4G/34128",
+    "matricNo": "CSC/15U/3279",
+    "firstName" : "Jacocb",
+    "lastName" : "Json Test", 
+    "middleName": "jacocb12",
+    "email": "nesw4@gmail.com", 
+    "phoneNo" :"09084998665",
+    "password": "password",
+    "userRoleId": 2
+}
+
+
+### Student Login with RegNo and Password
+POST http://localhost:5000/api/student/login 
+{
+    "regNo": "MM/22/4G/34123",
+    "password": "password",
+}
+
+
+
+### incident post
+POST http://localhost:5000/api/incident
+Content-Type: application/json
+
+{
+    "description": "Thinkig of going to work from Prisma to Handlebars  working ",
+    "studentId": 38,
+    "categoryId": 3,
+    "statusId": 2 
+    
+}
+
+### Get incident post
+
+GET http://localhost:5000/api/incident/1
+
+
+### Delete incident post
+DELETE http://localhost:5000/api/incident/10
+
+
+### Update incident Post 
+PATCH http://localhost:5000/api/incident/1
+Content-Type: application/json
+
+{
+    "description": "The things am trying are pretty going well. although it might take time",
+    "studentId": 3,
+    "categoryId": 2,
+    "statusId": 2 
+    
+}
+
+
+### Register Staff 
+POST http://localhost:5000/api/staff
+Content-Type: application/json
+
+{
+    "firstName" : "Staff",
+    "lastName" : "staa", 
+    "username": "staff1",
+    "email": "staff@gmail.com", 
+    "phoneNo" :"0908788787",
+    "password": "staff",
+    "userRoleId": 2
+}
+
+
+### Get feedback using incidentId 
+
+GET http://localhost:5000/api/feedback/1
+
+
+### Comment feedback
+POST http://localhost:5000/api/feedback/1
+Content-Type: application/json
+
+{
+    "response" : "It is working correctly and I love it",
+    "rating" : 5, 
+    "incidentId": 2
+    
+}
+
+
+### Delete Feedback
+DELETE http://localhost:5000/api/feedback/2
+
+
+###=================================
+## Get Assigned Staff
+
+GET http://localhost:5000/api/assign/4
+
+
+### Assign Staff
+POST http://localhost:5000/api/assign/1
+Content-Type: application/json
+
+{
+    "staffId" : 1,
+    "incidentId": 5
+    
+}
+
+
+### Delete Feedback
+DELETE http://localhost:5000/api/assign/1

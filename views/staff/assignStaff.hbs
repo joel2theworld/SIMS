@@ -1,0 +1,38 @@
+{{> dashboard-links}}
+<h4 class="text-center"> Assign Incident to Staff </h4>
+
+<div class="d-flex justify-content-center" >
+  <div class="col-sm-10">  
+<div class="card  p-5">
+
+{{#displayIncPost}}
+  <dl class="row">
+    <dt class="col-sm-3">Incident Posted</dt>
+  <dd class="col-sm-9">{{this.description}}</dd>
+ <dt class="col-sm-3">Posted by:</dt>
+  <dd class="col-sm-9">{{this.studentreg.firstName}}</dd>
+ 
+   <dt class="col-sm-3">Room No:</dt>
+  <dd class="col-sm-9">{{this.roomno}}</dd>
+
+ <dt class="col-sm-3">Status:</dt>
+  <dd class="col-sm-9">{{this.status.status}}</dd>
+
+  <dt class="col-sm-3">Category:</dt>
+  <dd class="col-sm-9">{{this.incidentcategory.category}}</dd> 
+<!-- Assign Staff to Incident -->          
+</dl>
+{{/displayIncPost }}
+<form action="/assign/assignstaff/{{id}}" method="post">
+<!-- Partial Assign staff List -->
+{{#if existInc}}
+  <label class="btn btn-success btn-sm">Assigned</label>
+    {{else}}
+     {{> assignStaffList}}        
+
+{{/if}}
+</form>
+</div>
+
+</div>
+

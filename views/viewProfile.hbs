@@ -1,0 +1,53 @@
+
+{{#each userProfile}}
+<div class='d-flex justify-content-center '>
+	<div class='col-md-7 shadow m-3'>
+        
+		<div class='card p-5'>
+            <h4 class='text-center text-capitalize text-danger mb-4 fw-bold'>User Profile </h4>
+
+			<dl class='row'>
+				
+					<dt class='col-sm-3'>Name </dt>
+					<dd class='col-sm-9 text-capitalize fw-bold'>{{this.lastName}}  {{this.firstName}} {{this.middleName}}</dd>
+
+					<dt class='col-sm-3'>Reg. No:</dt>
+					<dd class='col-sm-9'>
+						{{this.regNo}}
+					</dd>
+
+					<dt class='col-sm-3'>Matric No:</dt>
+					<dd class='col-sm-9'>
+						{{this.matricNo}}
+					</dd>
+                    
+                    <dt class='col-sm-3'>Gender:</dt>
+					<dd class='col-sm-9'> {{this.gender}}</dd>
+
+					<dt class='col-sm-3'>Email:</dt>
+					<dd class='col-sm-9'>{{this.email}}</dd>
+
+					<dt class='col-sm-3'>Phone No:</dt>
+					<dd class='col-sm-9'> {{this.phoneNo}}</dd>
+
+                    <dt class='col-sm-3'>Contact:</dt>
+					<dd class='col-sm-9'> {{this.address}}</dd>
+
+                    <dt class='col-sm-3'>Role:</dt>
+					<dd class='col-sm-9'> {{this.userrole.roles}}</dd>
+                     
+						
+
+			</dl>
+            <a
+					href='/dashboard'
+					type='button'
+					class='btn btn-danger btn-md d-grid gap-2 col-6 mx-auto fw-bold'
+					data-bs-dismiss='modal'
+					>  Back</a>
+		</div>
+        
+		</ul>
+	</div>
+</div>
+{{/each}}

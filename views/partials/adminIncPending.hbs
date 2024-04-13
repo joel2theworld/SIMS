@@ -1,0 +1,77 @@
+{{#if adminPendingInc.length}}
+	<h4 class='text-center'>All Pending Incidents</h4>
+	<!--User Loggged in RegNO -->
+	<form>
+		<input type='hidden' value={{userLoggedin}} />
+	</form>
+
+	<div class="container">
+		<form method='post' action='/pending' class='d-flex' role='search' novalidate>
+	{{> search}}
+	
+</form>
+
+	<table class='table table-bordered table-striped'>
+		<thead class='thead-dark'>
+			<tr>
+				<th scope='col'>#</th>
+				<th scope='col'>Description </th>
+				<th scope='col'>Room No </th>
+				<th scope='col'>Category </th>
+				<th scope='col'>Post by </th>
+				<th scope='col' class='text-center'>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{{#each adminPendingInc as |pending key|}}
+
+				<tr>
+					<th scope='row'>{{indexIncr @index}}</th>
+					<td>{{pending.description}}</td>
+					<td>{{pending.roomno}}</td>
+					<td>{{pending.incidentcategory.category}}</td>
+					<!--Nested loop for users -->
+					<td>
+						{{pending.studentreg.firstName}}
+					</td>
+					<td class='text-center'>
+						<!-- Display Not assigned Only -->
+          {{#each ../isNotAssigned as |assign|}}
+          {{#assignInc  pending.id assign.id }} 
+			<a href='/assign/assignstaff/{{pending.id}}' type='button'
+			class='btn btn-secondary btn-sm m-1'
+			><i class="bi bi-person-fill"></i> Assign </a>
+
+          <a href="/dashboard/{{pending.id}}" type="button" class="btn btn-danger btn-sm m-1"><i class="bi bi-trash3"></i> Delete</a> 
+          {{/assignInc }}               
+          {{/each}}
+		   <!-- Display if assigned Only -->
+
+          {{#each ../isAssigned as |assign|}}
+          {{#assignInc  pending.id assign.id }} 
+		  <a
+			href='/resolve/{{pending.id}}'
+			type='button'
+			class='btn btn-success btn-sm m-1'
+		><i class="bi bi-arrow-right"></i> Resolve</a>  
+		{{/assignInc }}  
+		{{/each}}  
+		</td>
+		</tr>
+{{/each}}
+		</tbody>
+	</table>
+	</div>	
+{{else}}
+
+	<div class='d-flex justify-content-center'>
+		<div class='col-md-5'>
+
+			<div class='card text-center p-5'>
+				<h3 class='text-danger'>No record found yet</h3>
+			</div>
+		</div>
+	</div>
+{{/if}}
+

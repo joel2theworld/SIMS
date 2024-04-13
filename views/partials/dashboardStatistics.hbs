@@ -1,0 +1,125 @@
+<h4 class='text-center'>Statistics of Incident Reports</h4>
+{{#if isAdmin}}
+	<!-- FOR AMIN USERS -->
+	<div class='row justify-content-center'>
+		<div class='card-group'>
+			<div class='card card m-2'>
+				<div class='card-header text-center bg-danger text-white'>Pending</div>
+				<div class='card-body'>
+					<h5 class='card-title text-center'>Total Pending </h5>
+					<h1 class='card-text text-center'>{{adminPendingCount}}</h1>
+
+				</div>
+			</div>
+
+			<div class='card m-2'>
+				<div
+					class='card-header text-center bg-success text-white'
+				>Resolved</div>
+				<div class='card-body'>
+
+					<h5 class='card-title text-center'>Total Resolved</h5>
+					<h1 class='text-center'>{{adminResolvedCount}}</h1>
+				</div>
+			</div>
+			<div class='card card m-2'>
+				<div class='card-header text-center bg-secondary text-white'>Total
+					Reported Cases</div>
+				<div class='card-body'>
+					<h5 class='card-title text-center'>Total Reports</h5>
+					<h1 class='text-center'>{{adminTotalCount}}</h1>
+				</div>
+			</div>
+			<div class='card card m-2'>
+				<div class='card-header text-center bg-info text-white'>All Users</div>
+				<div class='card-body'>
+					<ul class='list-group list-group-flush'>
+						<li
+							class='list-group-item d-flex justify-content-between align-items-center'
+						>
+							<a href='/allstaff' class='link-danger text-decoration-none'>
+								Staff
+							</a>
+							<span class='badge bg-danger rounded-pill'>{{staffCount}}</span>
+						</li>
+						<li
+							class='list-group-item d-flex justify-content-between align-items-center'
+						>
+							<a href='/allstudents' class='link-primary text-decoration-none'>
+								Student
+
+							</a>
+							<span
+								class='badge bg-primary rounded-pill'
+							>{{studentCount}}</span>
+						</li>
+
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- STUDENT VIEW ONLY-->
+{{else}}
+	<div class='row'>
+		<div class='card-group justify-content-center'>
+			<div class='card card m-2'>
+				<div class='card-header text-center bg-danger text-white'>Pending</div>
+				<div class='card-body'>
+					<h5 class='card-title text-center'>Total Pending </h5>
+					<h1 class='card-text text-center'>{{pendingCount}}</h1>
+
+				</div>
+			</div>
+
+			<div class='card m-2'>
+				<div
+					class='card-header text-center bg-success text-white'
+				>Resolved</div>
+				<div class='card-body'>
+
+					<h5 class='card-title text-center'>Total Resolved</h5>
+					<h1 class='text-center'>{{resolveCount}}</h1>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	{{!-- <div class='d-flex justify-content-center'>
+		<div class='container'>
+			<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+			<div class='row'>
+				<div class='col-6 col-md-4'>
+					<div class='card card m-2'>
+						<div
+							class='card-header text-center bg-danger text-white'
+						>Pending</div>
+						<div class='card-body'>
+							<h5 class='card-title text-center'>Total Pending </h5>
+							<h1 class='text-center'>{{pendingCount}}</h1>
+
+						</div>
+					</div>
+				</div>
+				<div class='col-6 col-md-4'>
+					<div class='card m-2'>
+						<div
+							class='card-header text-center bg-success text-white'
+						>Resolved</div>
+						<div class='card-body'>
+							<h5 class='card-title text-center'>Total Resolved</h5>
+							<h1 class='text-center'>{{resolveCount}}</h1>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>   --}}
+</form>
+
+{{/if}}

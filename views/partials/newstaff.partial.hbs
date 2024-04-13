@@ -1,0 +1,67 @@
+<div class='input-group m-2'>
+	<input
+		type='text'
+		name='firstName'
+		aria-label='First name'
+		class='form-control'
+		placeholder='FirstName'
+		required
+		value='{{this.firstName}}'
+	/>
+
+	<input
+		type='text'
+		name='lastName'
+		aria-label='Last name'
+		class='form-control'
+		placeholder='lastName'
+		value='{{this.lastName}}'
+		required
+	/>
+</div>
+
+<div class='input-group m-2'>
+	<!-- email input -->
+	<input
+		type='email'
+		name='email'
+		class='form-control'
+		placeholder='email'
+		value='{{this.email}}'
+	/>
+
+	<!-- Phone No input -->
+	<input
+		type='text'
+		name='phoneNo'
+		class='form-control'
+		placeholder='Phone Number'
+		maxlength='11'
+		value='{{this.phoneNo}}'
+	/>
+
+</div>
+
+<div class='input-group m-2'>
+	<!-- RegNo input -->
+	<input
+		type='text'
+		name='username'
+		class='form-control'
+		placeholder='username'
+		required
+		value='{{this.username}}'
+	/>
+
+	{{#if this.password}}{{else}}
+		<input
+			type='password'
+			name='password'
+			class='form-control'
+			placeholder='Password'
+			required
+		/>
+
+	{{/if}}
+
+</div>

@@ -1,0 +1,14 @@
+<div class="form-floating m-2">
+              <h6 class="text-center text-success m-2">Select Staff to assign report</h6>
+            <div class="input-group mb-3">
+
+            <select name="staffId" class="form-select" id="inputGroupSelect02" required >
+              <option selected>Choose Staff to assign...</option>
+              {{#staffList as |staff key|}}
+              <option value="{{staff.id}}">{{staff.firstName}} {{staff.lastName}}</option>
+              {{/staffList}}   
+            </select>
+            <input type="hidden" name="incidentId" value{{id}}>
+          <button type="submit" class="btn btn-danger">Assign </button>
+          </div>
+          </div>

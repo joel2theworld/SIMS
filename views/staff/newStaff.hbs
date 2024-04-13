@@ -1,0 +1,48 @@
+{{#if isAdmin}}
+
+<form class="d-flex justify-content-center" action="/newstaff" method="post">
+  <div class="col-md-7">
+   
+<div class="card text-center p-4">
+<h2 class="mb-3">New Staff </h2>
+  
+          <a class="btn btn-primary btn-sm d-grid gap-2 col-4 mx-auto" type="button" href="/allstaff">All Staff</a>
+
+<!--On successful message display-->
+{{> successMessage}}
+
+<!--On error message display -->
+{{> errorMessage}}
+  
+{{> newstaff.partial}}
+ 
+  <!-- Submit button -->
+ 
+
+  <!-- Register buttons -->
+<div class="row">
+     <a type="button" href="/allstaff" class="btn btn-secondary btn-sm d-grid gap-2 col-4 mx-auto">Cancel</a> 
+     <button type="submit" class="btn btn-danger btn-sm d-grid gap-2 col-7 mx-auto">Register</button> 
+
+
+</div>
+  
+  
+  </div>
+</div>
+  </div>  
+</form>
+
+        {{else}}
+        <div class="d-flex justify-content-center" >
+  <div class="col-md-5 ">
+   
+<div class="card text-center p-5">
+  <h3 class="text-danger">Unauthorized Access </h3>
+  </div>
+
+  </div>
+
+
+
+{{/if}}
