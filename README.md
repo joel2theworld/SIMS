@@ -1,5 +1,5 @@
 # SIMS
-Student Incentive Report System
+School Incident Management System
 
 # Note 
 .env and node_modules are excluded 
